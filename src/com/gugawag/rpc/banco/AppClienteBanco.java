@@ -27,10 +27,28 @@ public class AppClienteBanco {
                     String conta = entrada.next();
                     //chamada ao método remoto, como se fosse executar localmente
                     System.out.println(banco.saldo(conta));
+                    break;
                 }
                 case 2: {
                     //chamada ao método remoto, como se fosse executar localmente
                     System.out.println(banco.quantidadeContas());
+                    break;
+                }
+                case 3: {
+                    System.out.println("\nDigite o numero da conta: ");
+                    String numeroConta = entrada.next();
+                    System.out.println("\nDigite o saldo inicial da conta: ");
+                    Double saldo = entrada.nextDouble();
+                    System.out.println("Conta criada. Número da conta: "+ banco.adicionarConta(numeroConta, saldo));;
+                }
+                case 4: {
+                    System.out.println("\nDigite o numero da conta: ");
+                    String numeroConta = entrada.next();
+                    if(banco.removerConta(numeroConta)){
+                        System.out.println("conta " + numeroConta + " removida com sucesso.");
+                    } else {
+                        System.out.println("conta " + numeroConta + " não foi encontrada. Digite um número de conta válido.");
+                    }
                 }
             }
             menu();
@@ -39,10 +57,14 @@ public class AppClienteBanco {
     }
 
     public static void menu() {
+        System.out.println("\nAplicativo modificado por Jonas Ariel Passos de Medeiros");
         System.out.println("\n=== BANCO RMI (ou FMI?!) ===");
         System.out.println("1 - Saldo da conta");
         System.out.println("2 - Quantidade de contas");
+        System.out.println("3 - Adicionar conta");
+        System.out.println("4 - Remover conta");
         System.out.println("9 - Sair");
     }
+
 
 }
